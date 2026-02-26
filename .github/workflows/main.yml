@@ -1,43 +1,76 @@
-name: Google Voice Keep Alive & Auto Log
+name: GV Keep-Alive Multi
 
 on:
   schedule:
-    # 每月 1 号的 UTC 时间 00:00 运行 (北京时间上午 8:00)
     - cron: '0 0 1 * *'
-  workflow_dispatch: # 允许手动点按钮测试
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  keep-alive-job:
+  run-bot:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
-      - name: Run Python Script (Send SMS)
+      - name: Pulse LC
+        continue-on-error: true
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
-          GV_GATEWAY: ${{ secrets.GV_GATEWAY }}
+          GV_GATEWAY: ${{ secrets.GV_GATEWAY_LC }}
         run: python main.py
 
-      - name: Update Log File
-        run: |
-          # 将当前时间追加写入日志文件
-          echo "Run at $(date)" >> keepalive.log
+      - name: Pulse YZ
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GV_GATEWAY: ${{ secrets.GV_GATEWAY_YZ }}
+        run: python main.py
 
-      - name: Commit and Push Changes
+      - name: Pulse LZ
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GV_GATEWAY: ${{ secrets.GV_GATEWAY_LZ }}
+        run: python main.py
+
+      - name: Pulse XC
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GV_GATEWAY: ${{ secrets.GV_GATEWAY_XC }}
+        run: python main.py
+
+      - name: Pulse PR
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GV_GATEWAY: ${{ secrets.GV_GATEWAY_PR }}
+        run: python main.py
+
+      - name: Pulse HM
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GV_GATEWAY: ${{ secrets.GV_GATEWAY_HM }}
+        run: python main.py
+
+      - name: Update keepalive log
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
+          echo "Last multi-run: $(date)" > keepalive.log
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add keepalive.log
           git commit -m "Auto-update keepalive log [skip ci]" || echo "No changes to commit"
           git push
