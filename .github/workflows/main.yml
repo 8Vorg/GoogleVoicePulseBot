@@ -21,48 +21,48 @@ jobs:
       - name: Pulse LC
         continue-on-error: true
         env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_LC }}
         run: python main.py
 
       - name: Pulse YZ
         continue-on-error: true
         env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_YZ }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_YZ }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_YZ }}
         run: python main.py
 
       - name: Pulse LZ
         continue-on-error: true
         env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_LZ }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LZ }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_LZ }}
         run: python main.py
 
       - name: Pulse XC
         continue-on-error: true
         env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_XC }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_XC }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_XC }}
         run: python main.py
 
       - name: Pulse PR
         continue-on-error: true
         env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_PR }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_PR }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_PR }}
         run: python main.py
 
       - name: Pulse HM
         continue-on-error: true
         env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_HM }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_HM }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_HM }}
         run: python main.py
 
