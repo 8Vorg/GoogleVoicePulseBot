@@ -1,7 +1,8 @@
 name: GV Keep-Alive Multi
+
 on:
   schedule:
-    - cron: '0 18 * * 6'
+    - cron: '0 23 * * 5'
   workflow_dispatch:
 
 permissions:
@@ -12,65 +13,56 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          
-      - name: Install Google API Dependencies
-        run: pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
-        
+
       - name: Pulse LC
         continue-on-error: true
         env:
-          GCP_CLIENT_ID: ${{ secrets.GCP_CLIENT_ID }}
-          GCP_CLIENT_SECRET: ${{ secrets.GCP_CLIENT_SECRET }}
-          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN_LC }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_LC }}
         run: python main.py
 
       - name: Pulse YZ
         continue-on-error: true
         env:
-          GCP_CLIENT_ID: ${{ secrets.GCP_CLIENT_ID }}
-          GCP_CLIENT_SECRET: ${{ secrets.GCP_CLIENT_SECRET }}
-          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN_YZ }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_YZ }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_YZ }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_YZ }}
         run: python main.py
 
       - name: Pulse LZ
         continue-on-error: true
         env:
-          GCP_CLIENT_ID: ${{ secrets.GCP_CLIENT_ID }}
-          GCP_CLIENT_SECRET: ${{ secrets.GCP_CLIENT_SECRET }}
-          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN_LZ }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_LZ }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LZ }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_LZ }}
         run: python main.py
 
       - name: Pulse XC
         continue-on-error: true
         env:
-          GCP_CLIENT_ID: ${{ secrets.GCP_CLIENT_ID }}
-          GCP_CLIENT_SECRET: ${{ secrets.GCP_CLIENT_SECRET }}
-          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN_XC }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_XC }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_XC }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_XC }}
         run: python main.py
 
       - name: Pulse PR
         continue-on-error: true
         env:
-          GCP_CLIENT_ID: ${{ secrets.GCP_CLIENT_ID }}
-          GCP_CLIENT_SECRET: ${{ secrets.GCP_CLIENT_SECRET }}
-          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN_PR }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_PR }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_PR }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_PR }}
         run: python main.py
 
       - name: Pulse 8V
         continue-on-error: true
         env:
-          GCP_CLIENT_ID: ${{ secrets.GCP_CLIENT_ID }}
-          GCP_CLIENT_SECRET: ${{ secrets.GCP_CLIENT_SECRET }}
-          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN_8V }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER_8V }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_8V }}
           GV_GATEWAY: ${{ secrets.GV_GATEWAY_8V }}
         run: python main.py
 
