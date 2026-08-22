@@ -55,13 +55,13 @@ jobs:
         run: python main.py
 
         ### family@8-v.org ###
-        - name: Pulse FAM
-        continue-on-error: true
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER_FAM }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_FAM }}
-          GV_GATEWAY: ${{ vars.GV_GATEWAY_FAM }}
-        run: python main.py
+#        - name: Pulse FAM
+#        continue-on-error: true
+#        env:
+#          GMAIL_USER: ${{ secrets.GMAIL_USER_FAM }}
+#          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_FAM }}
+#          GV_GATEWAY: ${{ vars.GV_GATEWAY_FAM }}
+#        run: python main.py
 
         ### SUPERVISED AUTO RESPONDER lelamariezhou@gmail.com ###
         - name: Trigger Autoresponder LZ (via LC)
