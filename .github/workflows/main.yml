@@ -64,15 +64,6 @@ jobs:
           SMTP_HOST: smtp-relay.gmail.com
           ENVELOPE_SENDER: family@8-v.org
         run: python main.py
-  
-      ### family@8-v.org ###
-      # - name: Pulse FAM
-      #   continue-on-error: true
-      #   env:
-      #     GMAIL_USER: ${{ secrets.GMAIL_USER_FAM }}
-      #     GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_FAM }}
-      #     GV_GATEWAY: ${{ vars.GV_GATEWAY_FAM }}
-      #   run: python main.py
 
       ### SUPERVISED AUTO RESPONDER lelamariezhou@gmail.com ###
       # - name: Trigger Autoresponder LZ (via LC)
@@ -93,22 +84,22 @@ jobs:
       #   run: python main.py
 
       ### lelamariezhou@8-v.org ###
-      # - name: Pulse LZ
-      #   continue-on-error: true
-      #   env:
-      #     GMAIL_USER: ${{ secrets.GMAIL_USER_LZ }}
-      #     GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LZ_2 }}
-      #     GV_GATEWAY: ${{ vars.GV_GATEWAY_LZ }}
-      #   run: python main.py
+      - name: Pulse LZ
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER_LZ }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LZ_2 }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_LZ }}
+        run: python main.py
 
       ### alexander.a.cheung@8-v.org ###
-      # - name: Pulse XC
-      #   continue-on-error: true
-      #   env:
-      #     GMAIL_USER: ${{ secrets.GMAIL_USER_XC }}
-      #     GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_XC_2 }}
-      #     GV_GATEWAY: ${{ vars.GV_GATEWAY_XC }}
-      #   run: python main.py
+      - name: Pulse XC
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER_XC }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_XC_2 }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_XC }}
+        run: python main.py
 
       - name: Update keepalive log
         run: |
