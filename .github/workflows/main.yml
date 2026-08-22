@@ -23,7 +23,7 @@ jobs:
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
-          GV_GATEWAY: ${{ secrets.GV_GATEWAY_LC }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_LC }}
         run: python main.py
 
       - name: Pulse YZ
@@ -31,7 +31,7 @@ jobs:
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER_YZ }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_YZ }}
-          GV_GATEWAY: ${{ secrets.GV_GATEWAY_YZ }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_YZ }}
         run: python main.py
 
       - name: Pulse LZ
@@ -39,7 +39,7 @@ jobs:
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER_LZ }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LZ }}
-          GV_GATEWAY: ${{ secrets.GV_GATEWAY_LZ }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_LZ }}
         run: python main.py
 
       - name: Pulse XC
@@ -47,7 +47,7 @@ jobs:
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER_XC }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_XC }}
-          GV_GATEWAY: ${{ secrets.GV_GATEWAY_XC }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_XC }}
         run: python main.py
 
       - name: Pulse PR
@@ -55,7 +55,7 @@ jobs:
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER_PR }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_PR }}
-          GV_GATEWAY: ${{ secrets.GV_GATEWAY_PR }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_LY }}
         run: python main.py
 
       - name: Pulse 8V
@@ -63,7 +63,15 @@ jobs:
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER_8V }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_8V }}
-          GV_GATEWAY: ${{ secrets.GV_GATEWAY_8V }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_8V }}
+        run: python main.py
+
+        - name: Pulse FAM
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER_FAM }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_FAM }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_FAM }}
         run: python main.py
 
       - name: Update keepalive log
