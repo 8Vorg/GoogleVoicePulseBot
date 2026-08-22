@@ -18,6 +18,7 @@ jobs:
         with:
           python-version: '3.12'
 
+      ### leland.cheung@gmail.com ###
       - name: Pulse LC
         continue-on-error: true
         env:
@@ -26,6 +27,7 @@ jobs:
           GV_GATEWAY: ${{ vars.GV_GATEWAY_LC }}
         run: python main.py
 
+      ### zhou.yin@gmail.com ###
       - name: Pulse YZ
         continue-on-error: true
         env:
@@ -34,22 +36,7 @@ jobs:
           GV_GATEWAY: ${{ vars.GV_GATEWAY_YZ }}
         run: python main.py
 
-      - name: Pulse LZ
-        continue-on-error: true
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER_LZ }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LZ_2 }}
-          GV_GATEWAY: ${{ vars.GV_GATEWAY_LZ }}
-        run: python main.py
-
-      - name: Pulse XC
-        continue-on-error: true
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER_XC }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_XC_2 }}
-          GV_GATEWAY: ${{ vars.GV_GATEWAY_XC }}
-        run: python main.py
-
+      ### lelandandyin@gmail.com ###
       - name: Pulse PR
         continue-on-error: true
         env:
@@ -58,6 +45,7 @@ jobs:
           GV_GATEWAY: ${{ vars.GV_GATEWAY_LY }}
         run: python main.py
 
+      ### 8VineyardSt@gmail.com ###
       - name: Pulse 8V
         continue-on-error: true
         env:
@@ -66,6 +54,7 @@ jobs:
           GV_GATEWAY: ${{ vars.GV_GATEWAY_8V }}
         run: python main.py
 
+        ### family@8-v.org ###
         - name: Pulse FAM
         continue-on-error: true
         env:
@@ -73,6 +62,42 @@ jobs:
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_FAM }}
           GV_GATEWAY: ${{ vars.GV_GATEWAY_FAM }}
         run: python main.py
+
+        ### SUPERVISED AUTO RESPONDER lelamariezhou@gmail.com ###
+        - name: Trigger Autoresponder LZ (via LC)
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
+          GV_GATEWAY: ${{ vars.GV_AUTORESPOND_LC_LZ }}
+        run: python main.py
+
+      ### SUPERVISED AUTO RESPONDER alexander.a.cheung@gmail.com ###
+      - name: Trigger Autoresponder XC (via LC)
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
+          GV_GATEWAY: ${{ vars.GV_AUTORESPOND_LC_XC }}
+        run: python main.py
+
+        ### lelamariezhou@8-v.org ###
+#      - name: Pulse LZ
+#        continue-on-error: true
+#        env:
+#          GMAIL_USER: ${{ secrets.GMAIL_USER_LZ }}
+#          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LZ_2 }}
+#          GV_GATEWAY: ${{ vars.GV_GATEWAY_LZ }}
+#        run: python main.py
+
+        ### alexander.a.cheung@8-v.org ###
+#      - name: Pulse XC
+#        continue-on-error: true
+#        env:
+#          GMAIL_USER: ${{ secrets.GMAIL_USER_XC }}
+#          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_XC_2 }}
+#          GV_GATEWAY: ${{ vars.GV_GATEWAY_XC }}
+#        run: python main.py
 
       - name: Update keepalive log
         run: |
