@@ -53,6 +53,17 @@ jobs:
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_8V }}
           GV_GATEWAY: ${{ vars.GV_GATEWAY_8V }}
         run: python main.py
+
+      ### family@8-v.org (Via Google Workspace Relay) ###
+      - name: Pulse FAM
+        continue-on-error: true
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER_HOME }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_HOME }}
+          GV_GATEWAY: ${{ vars.GV_GATEWAY_FAM }}
+          SMTP_HOST: smtp-relay.gmail.com
+          ENVELOPE_SENDER: family@8-v.org
+        run: python main.py
   
       ### family@8-v.org ###
       # - name: Pulse FAM
@@ -64,22 +75,22 @@ jobs:
       #   run: python main.py
 
       ### SUPERVISED AUTO RESPONDER lelamariezhou@gmail.com ###
-      - name: Trigger Autoresponder LZ (via LC)
-        continue-on-error: true
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
-          GV_GATEWAY: ${{ vars.GV_AUTORESPOND_LC_LZ }}
-        run: python main.py
+      # - name: Trigger Autoresponder LZ (via LC)
+      #   continue-on-error: true
+      #   env:
+      #     GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
+      #     GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
+      #     GV_GATEWAY: ${{ vars.GV_AUTORESPOND_LC_LZ }}
+      #   run: python main.py
 
       ### SUPERVISED AUTO RESPONDER alexander.a.cheung@gmail.com ###
-      - name: Trigger Autoresponder XC (via LC)
-        continue-on-error: true
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
-          GV_GATEWAY: ${{ vars.GV_AUTORESPOND_LC_XC }}
-        run: python main.py
+      # - name: Trigger Autoresponder XC (via LC)
+      #   continue-on-error: true
+      #   env:
+      #     GMAIL_USER: ${{ secrets.GMAIL_USER_LC }}
+      #     GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD_LC }}
+      #     GV_GATEWAY: ${{ vars.GV_AUTORESPOND_LC_XC }}
+      #   run: python main.py
 
       ### lelamariezhou@8-v.org ###
       # - name: Pulse LZ
